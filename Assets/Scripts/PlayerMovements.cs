@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerMovements : MonoBehaviour
 {
     private float horizontal;
-    private float speed = 8f;
     private bool isFacingRight = true;
     private Rigidbody2D rb;
 
     //Serialized Fields
-    //[SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator anim;
+    [SerializeField] private float speed = 8f;
+    [SerializeField] private float jumpingPower = 5f;
 
     //States
     public PlayerStates currentState;
@@ -65,6 +66,14 @@ public class PlayerMovements : MonoBehaviour
          else {
             CurrentState = PlayerStates.IDLE;
          }
+
+         if(Input.GetButtonDown("Jump") && IsGrounded()) {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+         }
+    }
+
+    private bool IsGrounded() { 
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
     private void Flip() {
         if((isFacingRight && horizontal < 0) || (!isFacingRight && horizontal > 0)) {

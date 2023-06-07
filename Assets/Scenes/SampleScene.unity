@@ -234,6 +234,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!4 &465383668 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7257488786027356022, guid: 0ec097b8047603248a21582395612554, type: 3}
+  m_PrefabInstance: {fileID: 267353302123716760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +407,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1870828808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1870828809}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1870828809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870828808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -1.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 465383668}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &267353302123716760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -409,6 +445,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267353302431454518, guid: 0ec097b8047603248a21582395612554, type: 3}
+      propertyPath: groundCheck
+      value: 
+      objectReference: {fileID: 1870828809}
+    - target: {fileID: 267353302431454518, guid: 0ec097b8047603248a21582395612554, type: 3}
+      propertyPath: jumpingPower
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7257488786027356019, guid: 0ec097b8047603248a21582395612554, type: 3}
       propertyPath: m_Name
       value: Player
