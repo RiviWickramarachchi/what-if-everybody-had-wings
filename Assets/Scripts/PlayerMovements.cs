@@ -8,6 +8,7 @@ public class PlayerMovements : MonoBehaviour
     private bool isFacingRight = true;
     private Rigidbody2D rb;
 
+
     //Serialized Fields
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -72,7 +73,7 @@ public class PlayerMovements : MonoBehaviour
          }
     }
 
-    private bool IsGrounded() { 
+    private bool IsGrounded() {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
     private void Flip() {
