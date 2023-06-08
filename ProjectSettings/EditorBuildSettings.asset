@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Danielle.unity
+    guid: f5466d5fe2f486e4d866687b795aa733
+  - enabled: 1
     path: Assets/Scenes/Work.unity
     guid: 98b3ce5597ae65344ab81559c5fa4c23
   m_configObjects: {}
