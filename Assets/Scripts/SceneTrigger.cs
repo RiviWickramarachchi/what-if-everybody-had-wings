@@ -30,7 +30,6 @@ public class SceneTrigger : MonoBehaviour
                 OnSceneTriggered?.Invoke(this.gameObject.tag.ToString());
             }
         }
-
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
