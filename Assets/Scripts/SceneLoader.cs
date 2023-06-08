@@ -11,6 +11,7 @@ public class SceneLoader : MonoBehaviour
     private void OnEnable() {
         SceneTrigger.OnSceneTriggered += LoadScene;
         GameManager.OnDayEnd += LoadLevel;
+        WorkMiniGame.OnSceneEnd += LoadLevel;
     }
 
     private void LoadScene(string sceneName) {
@@ -21,9 +22,11 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(SceneTransition(sceneName));
     }
 
-    private void LoadLevel (int levelIndex) {
+    public void LoadLevel (int levelIndex) {
         //TODO: Load next level using Scene index
         //Make sure to add the base levels (days) close to eachother so that the transitions can be made easy
+        Debug.Log("Loading" + levelIndex);
+        StartCoroutine(LevelTransition(levelIndex));
     }
 
     IEnumerator SceneTransition(string sceneName)
@@ -38,8 +41,13 @@ public class SceneLoader : MonoBehaviour
     IEnumerator LevelTransition(int levelIndex)
     {
         transition.SetTrigger("Start");
+        if(GameManager.Instance.todoList.Count != 0) {
+            yield return new WaitForSeconds(sceneTransitionTime);
+        }
+        else {
+            yield return new WaitForSeconds(levelTransitionTime);
+        }
 
-        yield return new WaitForSeconds(levelTransitionTime);
 
         SceneManager.LoadScene(levelIndex);
     }
@@ -49,5 +57,6 @@ public class SceneLoader : MonoBehaviour
     private void OnDisable() {
         SceneTrigger.OnSceneTriggered -= LoadScene;
         GameManager.OnDayEnd -= LoadLevel;
+        WorkMiniGame.OnSceneEnd -= LoadLevel;
     }
 }

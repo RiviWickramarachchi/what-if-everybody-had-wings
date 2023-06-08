@@ -7,6 +7,7 @@ public class PlayerMovements : MonoBehaviour
     private float horizontal;
     private bool isFacingRight = true;
     private Rigidbody2D rb;
+    private Vector3 respawnPoint;
 
 
     //Serialized Fields
@@ -46,6 +47,7 @@ public class PlayerMovements : MonoBehaviour
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        respawnPoint = new Vector3(15.91f, -2.6947f, 0f);
     }
 
     // Update is called once per frame
@@ -82,6 +84,13 @@ public class PlayerMovements : MonoBehaviour
             Vector3 newLScale = transform.localScale;
             newLScale.x = newLScale.x * -1f;
             transform.localScale = newLScale;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.gameObject.tag == "Water") {
+            //TODO: Respawn the player left of the river
+            transform.position = respawnPoint;
         }
     }
 }

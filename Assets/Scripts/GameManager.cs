@@ -6,12 +6,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //private variables
-    private int dayCount; //can be used to keep track of different levels
+
 
     //public variables
     public List<Todos> todoList;
     public static GameManager Instance;
     public static event Action<int> OnDayEnd;
+    public int dayCount; //can be used to keep track of different levels
 
     private void Awake() {
         if(Instance != null) {
@@ -19,7 +20,6 @@ public class GameManager : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
-        //dialogueVariables = new DialogueVariables(loadGlobalsJSON);
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
     }
@@ -37,14 +37,12 @@ public class GameManager : MonoBehaviour
     }
 
 
-    private void MarkTodoComplete(int todoId) {
+    public void MarkTodoComplete(int todoId) {
         for(int i = 0; i<todoList.Count; i++) {
             if(todoList[i].todoID == todoId) {
                 todoList[i].TaskCompleted();
             }
         }
-        //TODO: Check the todo list for the ID of the specific task that was completed
-        //TODO: If ID was found, mark that specific todo Item as done (Call the TaskCompleted method on Todos)
     }
     public void AddTodos(Todos todo) {
         //TODO
@@ -68,9 +66,9 @@ public class GameManager : MonoBehaviour
             Debug.Log("Level Completed");
             ClearTodos();
             dayCount++;
-            //Transition to the next level (scene)
-            //OnDayEnd?.Invoke(dayCount);
-            //TODO: Call SceneLoader.LoadNextLvl
+            if(dayCount >6) {
+                //TODO: TRIGGER END GAME STUFF
+            }
         }
     }
 

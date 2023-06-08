@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
@@ -12,6 +13,9 @@ public class WorkMiniGame : MonoBehaviour
     [SerializeField] private Image fillImg;
     [SerializeField] private float workIntensity;
     [SerializeField] private TMP_Text timerText;
+    [SerializeField] private Button workBtn;
+    [SerializeField] private Button nextBtn;
+    [SerializeField] private int workID;
 
     //Private variables
     private float maxTime;
@@ -19,6 +23,7 @@ public class WorkMiniGame : MonoBehaviour
     private float totalProgress;
 
     //Public variables
+    public static event Action<int> OnSceneEnd;
     public WorkStates currentState;
 	public enum WorkStates
     {
@@ -39,11 +44,13 @@ public class WorkMiniGame : MonoBehaviour
         }
     }
     void Start() {
+        workBtn.interactable = true;
         maxTime = 8f;
         totalProgress = 0;
         currentTime = maxTime;
         SetTimeUI(currentTime);
         CurrentWorkState = WorkStates.PreStart;
+        nextBtn.gameObject.SetActive(false);
     }
 
     void Update() {
@@ -61,10 +68,25 @@ public class WorkMiniGame : MonoBehaviour
         workProgressBar.value = totalProgress;
         Debug.Log(workProgressBar.value);
         fillImg.color = gradient.Evaluate(workProgressBar.normalizedValue);
+        if(totalProgress >= 1) {
+            workBtn.interactable = false;
+        }
+    }
+
+    public void WorkFinished() {
+        //tICK oFF task
+        GameManager.Instance.MarkTodoComplete(workID);
+        //TODO: Transition Back To Level Scene
+        //UnityEvents
+        OnSceneEnd?.Invoke(GetDayCount());
     }
 
     private void SetTimeUI(float time) {
         timerText.text = time.ToString("0");
+    }
+
+    private int GetDayCount() {
+        return GameManager.Instance.dayCount;
     }
 
     public void Timer()
@@ -82,8 +104,9 @@ public class WorkMiniGame : MonoBehaviour
         {
             CurrentWorkState = WorkStates.Finished;
             //GameOverState
-            Debug.Log("GameOver");
+            workBtn.interactable = false;
             //Display Next Btn
+            nextBtn.gameObject.SetActive(true);
         }
         //TODO : When the timer is less than 5 turn the timer text red
     }

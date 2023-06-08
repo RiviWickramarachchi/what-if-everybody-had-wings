@@ -15,8 +15,10 @@ public class TodoGiver : MonoBehaviour
         SendDailyTasksToGameMgr();
     }
     private void SendDailyTasksToGameMgr() {
-        foreach(Todos todo in todos) {
-            GameManager.Instance.AddTodos(todo);
+        if(GameManager.Instance.todoList.Count == 0) {
+            foreach(Todos todo in todos) {
+                GameManager.Instance.AddTodos(todo);
+            }
         }
     }
 }
