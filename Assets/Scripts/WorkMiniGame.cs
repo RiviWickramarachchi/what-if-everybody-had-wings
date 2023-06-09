@@ -11,16 +11,17 @@ public class WorkMiniGame : MonoBehaviour
     [SerializeField]private Gradient gradient;
     [SerializeField] private Slider workProgressBar;
     [SerializeField] private Image fillImg;
-    [SerializeField] private float workIntensity;
     [SerializeField] private TMP_Text timerText;
     [SerializeField] private Button workBtn;
     [SerializeField] private Button nextBtn;
-    [SerializeField] private int workID;
+
 
     //Private variables
     private float maxTime;
     private float currentTime;
     private float totalProgress;
+    private int workID;
+    private float workIntensity;
 
     //Public variables
     public static event Action<int> OnSceneEnd;
@@ -49,6 +50,8 @@ public class WorkMiniGame : MonoBehaviour
         totalProgress = 0;
         currentTime = maxTime;
         SetTimeUI(currentTime);
+        SetWorkID();
+        SetWorkIntensity();
         CurrentWorkState = WorkStates.PreStart;
         nextBtn.gameObject.SetActive(false);
     }
@@ -83,6 +86,33 @@ public class WorkMiniGame : MonoBehaviour
 
     private void SetTimeUI(float time) {
         timerText.text = time.ToString("0");
+    }
+
+    private void SetWorkID() {
+        string taskId = "1";
+        string wId = GetDayCount().ToString() + taskId;
+        workID = Int32.Parse(wId);
+        Debug.Log(workID);
+    }
+
+    private void SetWorkIntensity() {
+        switch(GetDayCount()) {
+            case 1:
+                workIntensity = 10f;
+                break;
+            case 2:
+                workIntensity = 10f;
+                break;
+            case 3:
+                workIntensity = 5f;
+                break;
+            case 4:
+                workIntensity = 3f;
+                break;
+            case 5:
+                workIntensity = 1f;
+                break;
+        }
     }
 
     private int GetDayCount() {

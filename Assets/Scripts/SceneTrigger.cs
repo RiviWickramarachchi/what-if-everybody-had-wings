@@ -7,13 +7,9 @@ public class SceneTrigger : MonoBehaviour
 {
     private bool playerInRange;
     public static event Action<string> OnSceneTriggered;
+    public static event Action<bool> OnInteractionTrigger;
     void Awake() {
         playerInRange = false;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -36,10 +32,25 @@ public class SceneTrigger : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             playerInRange = true;
+            OnInteractionTrigger?.Invoke(playerInRange);
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            playerInRange = true;
 
         }
     }
      private void OnTriggerExit2D(Collider2D other)
+    {
+        playerInRange = false;
+        OnInteractionTrigger?.Invoke(playerInRange);
+    }
+    private void OnCollisionExit2D(Collision2D other)
     {
         playerInRange = false;
     }

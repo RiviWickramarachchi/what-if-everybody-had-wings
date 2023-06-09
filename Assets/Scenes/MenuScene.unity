@@ -317,7 +317,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -822,6 +822,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7963713405623049126, guid: e2b8792e96c12634cb643c45a121247c, type: 3}
+      propertyPath: dayCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7963713405623049127, guid: e2b8792e96c12634cb643c45a121247c, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -890,8 +894,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1f29a65a2f2ccd2458b60a9007ab97d5, type: 2}
+  m_sharedMaterial: {fileID: -985531925424469751, guid: 1f29a65a2f2ccd2458b60a9007ab97d5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

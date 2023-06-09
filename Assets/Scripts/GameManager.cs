@@ -25,17 +25,8 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        dayCount = 0;
+        dayCount = 1;
     }
-
-    // Update is called once per frame
-    void Update()
-    {   //test
-         if(Input.GetKeyDown(KeyCode.X)) {
-            MarkTodoComplete(11);
-        }
-    }
-
 
     public void MarkTodoComplete(int todoId) {
         for(int i = 0; i<todoList.Count; i++) {

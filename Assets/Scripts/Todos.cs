@@ -16,4 +16,15 @@ public class Todos : ScriptableObject
         //TODO: Call the checkTodoCompletion Method in Game Mgr
         GameManager.Instance.CheckTodoCompletion();
    }
+
+   public Sprite GetTaskStateSprite() {
+        switch (todoState)
+        {
+            default:
+            case TodoState.Not_Done:
+                return TodoStateAssets.Instance.taskNotDoneSprite;
+            case TodoState.Done:
+                return TodoStateAssets.Instance.taskDoneSprite;
+        }
+   }
 }

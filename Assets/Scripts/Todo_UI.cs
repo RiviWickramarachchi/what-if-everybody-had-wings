@@ -40,16 +40,17 @@ public class Todo_UI : MonoBehaviour
         int y = 0;
         //display the todo Items
         foreach(Todos todo in GameManager.Instance.todoList) {
+            //Debug.Log(todo);
             RectTransform todoItemSlotRectTransform;
             TextMeshProUGUI todoItemName;
-            //Image image;
+            Image image;
             todoItemSlotRectTransform = Instantiate(todoItemTemplate, todoSlotContainer).GetComponent<RectTransform>();
             todoItemSlotRectTransform.gameObject.SetActive(true);
             todoItemSlotRectTransform.anchoredPosition = new Vector2(0 * todoItemSlotCellSize, y * todoItemSlotCellSize);
             todoItemName = todoItemSlotRectTransform.Find("ItemName").GetComponent<TextMeshProUGUI>();
             todoItemName.SetText(todo.todoDescription.ToString());
-            //image = questSlotRectTransform.Find("QuestStatusImg").GetComponent<Image>();
-            //image.sprite = quest.GetQuestStateSprite();
+            image = todoItemSlotRectTransform.Find("Status").GetComponent<Image>();
+            image.sprite = todo.GetTaskStateSprite();
             y--;
             x++;
             if (x > 1)
