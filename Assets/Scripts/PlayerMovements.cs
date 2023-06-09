@@ -78,6 +78,10 @@ public class PlayerMovements : MonoBehaviour
          if(Input.GetButtonDown("Jump") && IsGrounded()) {
             rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
          }
+
+         if(Input.GetKeyDown(KeyCode.Return)) {
+            RespawnPlayer();
+         }
     }
 
     private bool IsGrounded() {
@@ -92,10 +96,14 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
+    private void RespawnPlayer() {
+        transform.position = respawnPoint;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.tag == "Water") {
             //TODO: Respawn the player left of the river
-            transform.position = respawnPoint;
+            RespawnPlayer();
         }
     }
 
