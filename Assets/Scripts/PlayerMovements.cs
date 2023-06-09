@@ -11,6 +11,7 @@ public class PlayerMovements : MonoBehaviour
 
 
     //Serialized Fields
+    [SerializeField] private GameObject interactImg;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator anim;
@@ -41,6 +42,10 @@ public class PlayerMovements : MonoBehaviour
 					break;
 			}
         }
+    }
+
+    void OnEnable() { 
+        SceneTrigger.OnInteractionTrigger += DisplayInteract;
     }
 
     // Start is called before the first frame update
@@ -92,5 +97,13 @@ public class PlayerMovements : MonoBehaviour
             //TODO: Respawn the player left of the river
             transform.position = respawnPoint;
         }
+    }
+
+    public void DisplayInteract(bool interactionStatus) {
+        interactImg.SetActive(interactionStatus);
+    }
+
+    void OnDisable() {
+        SceneTrigger.OnInteractionTrigger -= DisplayInteract;
     }
 }
