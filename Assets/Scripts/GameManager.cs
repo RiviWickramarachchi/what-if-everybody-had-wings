@@ -35,6 +35,17 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public bool CheckTaskCompletion(int workId) {
+        for(int i = 0; i<todoList.Count; i++) {
+            if(todoList[i].todoID == workId) {
+                if(todoList[i].todoState == Todos.TodoState.Done) {
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
     public void AddTodos(Todos todo) {
         //TODO
         //Add todos from the todo giver
