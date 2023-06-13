@@ -6,11 +6,11 @@ public class PlayerMovements : MonoBehaviour
 {
     private float horizontal;
     private bool isFacingRight = true;
-    private Rigidbody2D rb;
     private Vector3 respawnPoint;
 
 
     //Serialized Fields
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject interactImg;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -44,14 +44,13 @@ public class PlayerMovements : MonoBehaviour
         }
     }
 
-    void OnEnable() { 
+    void OnEnable() {
         SceneTrigger.OnInteractionTrigger += DisplayInteract;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody2D>();
         respawnPoint = new Vector3(15.91f, -2.6947f, 0f);
     }
 
@@ -85,6 +84,7 @@ public class PlayerMovements : MonoBehaviour
     }
 
     private bool IsGrounded() {
+        Debug.Log(Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer));
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
     private void Flip() {
