@@ -89,7 +89,7 @@ public class WorkMiniGame : MonoBehaviour
     }
 
     private void SetWorkID() {
-        string taskId = "1";
+        string taskId = "1"; //1 for office work
         string wId = GetDayCount().ToString() + taskId;
         workID = Int32.Parse(wId);
         Debug.Log(workID);

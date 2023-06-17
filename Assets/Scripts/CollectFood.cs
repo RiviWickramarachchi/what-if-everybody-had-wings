@@ -20,12 +20,6 @@ public class CollectFood : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private void SetWorkID() {
         string taskId = "2"; //2 FOR GROCERY SHOPPING
         string wId = GetDayCount().ToString() + taskId;
