@@ -37,21 +37,21 @@ public class SceneTrigger : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            playerInRange = true;
+    // private void OnCollisionEnter2D(Collision2D other)
+    // {
+    //     if(other.gameObject.tag == "Player")
+    //     {
+    //         playerInRange = true;
 
-        }
-    }
+    //     }
+    // }
      private void OnTriggerExit2D(Collider2D other)
     {
         playerInRange = false;
         OnInteractionTrigger?.Invoke(playerInRange);
     }
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        playerInRange = false;
-    }
+    // private void OnCollisionExit2D(Collision2D other)
+    // {
+    //     playerInRange = false;
+    // }
 }

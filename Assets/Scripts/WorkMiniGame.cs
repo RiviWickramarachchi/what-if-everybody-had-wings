@@ -24,7 +24,7 @@ public class WorkMiniGame : MonoBehaviour
     private float workIntensity;
 
     //Public variables
-    public static event Action<int> OnSceneEnd;
+    public static event Action<string> OnSceneEnd;
     public WorkStates currentState;
 	public enum WorkStates
     {
@@ -81,7 +81,7 @@ public class WorkMiniGame : MonoBehaviour
         GameManager.Instance.MarkTodoComplete(workID);
         //TODO: Transition Back To Level Scene
         //UnityEvents
-        OnSceneEnd?.Invoke(GetDayCount());
+        OnSceneEnd?.Invoke(this.gameObject.tag.ToString());
     }
 
     private void SetTimeUI(float time) {
@@ -89,7 +89,7 @@ public class WorkMiniGame : MonoBehaviour
     }
 
     private void SetWorkID() {
-        string taskId = "1";
+        string taskId = "1"; //1 for office work
         string wId = GetDayCount().ToString() + taskId;
         workID = Int32.Parse(wId);
         Debug.Log(workID);
@@ -116,7 +116,7 @@ public class WorkMiniGame : MonoBehaviour
     }
 
     private int GetDayCount() {
-        return GameManager.Instance.dayCount;
+        return GameManager.Instance.DayCount;
     }
 
     public void Timer()
