@@ -19,7 +19,9 @@ public class CollectFood : MonoBehaviour
 
 
     }
-
+    void Update() {
+        PickUpFood();
+    }
     private void SetWorkID() {
         string taskId = "2"; //2 FOR GROCERY SHOPPING
         string wId = GetDayCount().ToString() + taskId;
@@ -37,7 +39,7 @@ public class CollectFood : MonoBehaviour
         }
     }
     private int GetDayCount() {
-        return GameManager.Instance.dayCount;
+        return GameManager.Instance.DayCount;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

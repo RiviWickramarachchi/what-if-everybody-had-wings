@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System;
 
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField] private float sceneTransitionTime = 2f;
     [SerializeField] private float levelTransitionTime = 5f;
     [SerializeField] private Animator transition;
+
+    //public variables
+    public static event Action OnSceneChange;
     private void OnEnable() {
-        SceneTrigger.OnSceneTriggered += LoadScene;
+        SceneTrigger.OnSceneTriggered += DecideLoader;
         GameManager.OnDayEnd += LoadLevel;
-        WorkMiniGame.OnSceneEnd += LoadLevel;
+        WorkMiniGame.OnSceneEnd += DecideLoader;
     }
 
     private void LoadScene(string sceneName) {
@@ -27,6 +31,19 @@ public class SceneLoader : MonoBehaviour
         //Make sure to add the base levels (days) close to eachother so that the transitions can be made easy
         Debug.Log("Loading" + levelIndex);
         StartCoroutine(LevelTransition(levelIndex));
+    }
+
+    private void DecideLoader(string sceneName) {
+        if(GameManager.Instance.IsInMiniGame) {
+            GameManager.Instance.IsInMiniGame = false;
+            GameManager.Instance.CheckTodoCompletion(); //SEE IF A NEW LEVEL NEEDS TO BE LOADED
+            LoadLevel(GameManager.Instance.DayCount);
+        }
+        else {
+            GameManager.Instance.IsInMiniGame = true;
+            OnSceneChange?.Invoke();
+            LoadScene(sceneName);
+        }
     }
 
     IEnumerator SceneTransition(string sceneName)
@@ -55,8 +72,8 @@ public class SceneLoader : MonoBehaviour
         //TODO: Load End Game Scene
     }
     private void OnDisable() {
-        SceneTrigger.OnSceneTriggered -= LoadScene;
+        SceneTrigger.OnSceneTriggered -= DecideLoader;
         GameManager.OnDayEnd -= LoadLevel;
-        WorkMiniGame.OnSceneEnd -= LoadLevel;
+        WorkMiniGame.OnSceneEnd -= DecideLoader;
     }
 }

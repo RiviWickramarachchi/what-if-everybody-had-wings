@@ -240,8 +240,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.019313056, y: -1.24}
-  m_Size: {x: 0.73510337, y: 0.6030263}
+  m_Offset: {x: 0.04628126, y: -0.18916711}
+  m_Size: {x: 1.2744675, y: 2.7046957}
   m_Direction: 0
 --- !u!114 &4986088622905231165
 MonoBehaviour:
@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8624776677400273975}
+  playerTransform: {fileID: 2045699445715698689}
   interactImg: {fileID: 569241981235714328}
   groundCheck: {fileID: 8890628202809896678}
   groundLayer:

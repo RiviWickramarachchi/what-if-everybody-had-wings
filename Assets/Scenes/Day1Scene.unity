@@ -5313,8 +5313,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2645024421997602207, guid: a3f4ee0a868e1b444858055a35026243, type: 3}
       propertyPath: todos.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2645024421997602207, guid: a3f4ee0a868e1b444858055a35026243, type: 3}
+      propertyPath: todos.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e677823426cbbd4ea1f7aa8a08a4050, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f4ee0a868e1b444858055a35026243, type: 3}
 --- !u!1 &1756649240
@@ -6221,9 +6225,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2040940320}
   - component: {fileID: 2040940321}
+  - component: {fileID: 2040940323}
+  - component: {fileID: 2040940322}
   m_Layer: 0
   m_Name: shop-building2_256png
-  m_TagString: Untagged
+  m_TagString: Shopping
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6295,6 +6301,44 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2040940322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040940319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c5e290d83cc6aa48bff20f55209eb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!61 &2040940323
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040940319}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.56, y: 3.68}
+    newSize: {x: 2.56, y: 3.68}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.56, y: 3.68}
+  m_EdgeRadius: 0
 --- !u!1 &2088920932
 GameObject:
   m_ObjectHideFlags: 0

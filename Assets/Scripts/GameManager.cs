@@ -6,13 +6,18 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     //private variables
-
+    private int dayCount;
+    private bool isInMiniGame;
 
     //public variables
     public List<Todos> todoList;
     public static GameManager Instance;
+
+    public int DayCount { get => dayCount; set => dayCount = value; }
+    public bool IsInMiniGame { get => isInMiniGame; set => isInMiniGame = value; }
+
     public static event Action<int> OnDayEnd;
-    public int dayCount; //can be used to keep track of different levels
+     //can be used to keep track of different levels
 
     private void Awake() {
         if(Instance != null) {
@@ -25,9 +30,11 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        dayCount = 1;
+        DayCount = 1;
     }
-
+    private void DeletePositionData() {
+        PlayerPrefs.DeleteAll();
+    }
     public void MarkTodoComplete(int todoId) {
         for(int i = 0; i<todoList.Count; i++) {
             if(todoList[i].todoID == todoId) {
@@ -36,6 +43,7 @@ public class GameManager : MonoBehaviour
         }
     }
     public bool CheckTaskCompletion(int workId) {
+        Debug.Log("WID:"+workId);
         for(int i = 0; i<todoList.Count; i++) {
             if(todoList[i].todoID == workId) {
                 if(todoList[i].todoState == Todos.TodoState.Done) {
@@ -52,8 +60,6 @@ public class GameManager : MonoBehaviour
         todoList.Add(todo);
     }
 
-    //test script
-
     public void CheckTodoCompletion() {
         //TODO: Get the todo list length
         //TODO: Check if the no of tasks completed = length of the list
@@ -67,9 +73,11 @@ public class GameManager : MonoBehaviour
             //TODO: Blackout Screen
             Debug.Log("Level Completed");
             ClearTodos();
-            dayCount++;
-            if(dayCount >6) {
+            DeletePositionData();
+            DayCount++;
+            if(DayCount >6) {
                 //TODO: TRIGGER END GAME STUFF
+                //TODO: Set All Scriptable assets to not done
             }
         }
     }

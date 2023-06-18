@@ -13,8 +13,6 @@ public class Todos : ScriptableObject
    public void TaskCompleted() {
         todoState = TodoState.Done;
         Debug.Log("Task completed");
-        //TODO: Call the checkTodoCompletion Method in Game Mgr
-        GameManager.Instance.CheckTodoCompletion();
    }
 
    public Sprite GetTaskStateSprite() {
