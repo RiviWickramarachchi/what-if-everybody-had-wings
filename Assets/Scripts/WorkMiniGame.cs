@@ -101,10 +101,10 @@ public class WorkMiniGame : MonoBehaviour
                 workIntensity = 10f;
                 break;
             case 2:
-                workIntensity = 10f;
+                workIntensity = 5f;
                 break;
             case 3:
-                workIntensity = 5f;
+                workIntensity = 1f;
                 break;
             case 4:
                 workIntensity = 3f;

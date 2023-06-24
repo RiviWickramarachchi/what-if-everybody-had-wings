@@ -26,18 +26,18 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(SceneTransition(sceneName));
     }
 
-    public void LoadLevel (int levelIndex) {
+    public void LoadLevel () {
         //TODO: Load next level using Scene index
         //Make sure to add the base levels (days) close to eachother so that the transitions can be made easy
-        Debug.Log("Loading" + levelIndex);
-        StartCoroutine(LevelTransition(levelIndex));
+        Debug.Log("Loading Main Scene");
+        StartCoroutine(LevelTransition());
     }
 
     private void DecideLoader(string sceneName) {
         if(GameManager.Instance.IsInMiniGame) {
             GameManager.Instance.IsInMiniGame = false;
             GameManager.Instance.CheckTodoCompletion(); //SEE IF A NEW LEVEL NEEDS TO BE LOADED
-            LoadLevel(GameManager.Instance.DayCount);
+            LoadLevel();
         }
         else {
             GameManager.Instance.IsInMiniGame = true;
@@ -55,7 +55,8 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    IEnumerator LevelTransition(int levelIndex)
+    //changes
+    IEnumerator LevelTransition()
     {
         transition.SetTrigger("Start");
         if(GameManager.Instance.todoList.Count != 0) {
@@ -66,7 +67,7 @@ public class SceneLoader : MonoBehaviour
         }
 
 
-        SceneManager.LoadScene(levelIndex);
+        SceneManager.LoadScene(1); //index for the main scene
     }
     private void LoadFinal() {
         //TODO: Load End Game Scene

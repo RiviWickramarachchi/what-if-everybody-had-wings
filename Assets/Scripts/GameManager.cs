@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public int DayCount { get => dayCount; set => dayCount = value; }
     public bool IsInMiniGame { get => isInMiniGame; set => isInMiniGame = value; }
 
-    public static event Action<int> OnDayEnd;
+    public static event Action OnDayEnd;
      //can be used to keep track of different levels
 
     private void Awake() {
