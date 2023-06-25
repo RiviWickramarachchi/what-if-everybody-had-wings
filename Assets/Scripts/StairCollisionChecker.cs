@@ -18,7 +18,7 @@ public class StairCollisionChecker : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("eNTERED");
+        //Debug.Log("eNTERED");
         if(other.CompareTag("Player"))
         {
             isOnCollider = !isOnCollider;
