@@ -6,8 +6,15 @@ using UnityEngine.Assertions;
 public class TodoGiver : MonoBehaviour
 {
 
-    [SerializeField] private List<Todos> todos;
+    [SerializeField] private List<Todos> todosDay1;
+    [SerializeField] private List<Todos> todosDay2;
+    [SerializeField] private List<Todos> todosDay3;
+
+    //private list
+    private List<Todos> todos;
     private void Awake() {
+        todos = new List<Todos>();
+        SetDayTasks();
         Assert.IsNotNull(todos);
 
     }
@@ -28,6 +35,26 @@ public class TodoGiver : MonoBehaviour
             foreach(Todos todo in todos) {
                 todo.todoState = Todos.TodoState.Not_Done;
             }
+        }
+    }
+
+    private void SetDayTasks() {
+        switch(GameManager.Instance.DayCount) {
+            case 1:
+                foreach(Todos todo in todosDay1) {
+                    todos.Add(todo);
+                }
+                break;
+            case 2:
+                foreach(Todos todo in todosDay2) {
+                    todos.Add(todo);
+                }
+                break;
+            case 3:
+                foreach(Todos todo in todosDay3) {
+                    todos.Add(todo);
+                }
+                break;
         }
     }
 }
