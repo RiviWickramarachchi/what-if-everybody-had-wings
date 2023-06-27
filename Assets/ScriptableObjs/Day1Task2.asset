@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Day1Task2
   m_EditorClassIdentifier: 
   todoID: 12
-  todoDescription: Grab some groceries
+  todoDescription: Buy Groceries
   todoState: 1

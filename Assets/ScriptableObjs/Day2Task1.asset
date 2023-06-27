@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Day2Task1
   m_EditorClassIdentifier: 
   todoID: 21
-  todoDescription: Go to work Day2
+  todoDescription: Go to work
   todoState: 1
