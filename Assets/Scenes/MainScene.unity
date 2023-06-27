@@ -6530,7 +6530,7 @@ PrefabInstance:
     - target: {fileID: 2645024421997602207, guid: a3f4ee0a868e1b444858055a35026243, type: 3}
       propertyPath: todos.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 7e677823426cbbd4ea1f7aa8a08a4050, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2645024421997602207, guid: a3f4ee0a868e1b444858055a35026243, type: 3}
       propertyPath: todosDay1.Array.size
       value: 2

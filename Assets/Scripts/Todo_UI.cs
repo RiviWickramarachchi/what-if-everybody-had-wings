@@ -40,7 +40,6 @@ public class Todo_UI : MonoBehaviour
         int y = 0;
         //display the todo Items
         foreach(Todos todo in GameManager.Instance.todoList) {
-            //Debug.Log(todo);
             RectTransform todoItemSlotRectTransform;
             TextMeshProUGUI todoItemName;
             Image image;

@@ -16,15 +16,16 @@ public class TodoGiver : MonoBehaviour
         todos = new List<Todos>();
         SetDayTasks();
         Assert.IsNotNull(todos);
-
-    }
-    void Start() {
         SetTaskStatus();
         SendDailyTasksToGameMgr();
+
     }
+
     private void SendDailyTasksToGameMgr() {
+        Debug.Log("Starting To Send DailyTasks");
         if(GameManager.Instance.todoList.Count == 0) {
             foreach(Todos todo in todos) {
+                Debug.Log("Task Added");
                 GameManager.Instance.AddTodos(todo);
             }
         }

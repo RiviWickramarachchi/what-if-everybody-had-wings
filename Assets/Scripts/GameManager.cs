@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     public void AddTodos(Todos todo) {
         //TODO
         //Add todos from the todo giver
+        Debug.Log("Adding Task to Game Mgr");
         todoList.Add(todo);
     }
 
