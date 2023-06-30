@@ -522,7 +522,7 @@ TextureImporter:
       name: Grass2_1
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 40
         width: 8
         height: 8
@@ -543,7 +543,7 @@ TextureImporter:
       name: Grass2_2
       rect:
         serializedVersion: 2
-        x: 8
+        x: 9
         y: 40
         width: 8
         height: 8
@@ -564,7 +564,7 @@ TextureImporter:
       name: Grass2_3
       rect:
         serializedVersion: 2
-        x: 16
+        x: 17
         y: 40
         width: 8
         height: 8
@@ -585,7 +585,7 @@ TextureImporter:
       name: Grass2_4
       rect:
         serializedVersion: 2
-        x: 24
+        x: 25
         y: 40
         width: 8
         height: 8
@@ -606,7 +606,7 @@ TextureImporter:
       name: Grass2_5
       rect:
         serializedVersion: 2
-        x: 32
+        x: 33
         y: 40
         width: 8
         height: 8
