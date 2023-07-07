@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shopping.unity
     guid: 569643a53333c4e40bbe73127ae0bb2f
+  - enabled: 1
+    path: Assets/Scenes/TransitionScene.unity
+    guid: e3017cc61962add45abc74d0e556d2fe
   m_configObjects: {}

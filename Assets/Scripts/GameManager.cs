@@ -27,9 +27,6 @@ public class GameManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(this.gameObject);
-    }
-    void Start()
-    {
         DayCount = 1;
     }
     private void DeletePositionData() {
@@ -76,10 +73,10 @@ public class GameManager : MonoBehaviour
             ClearTodos();
             DeletePositionData();
             DayCount++;
-            if(DayCount >6) {
-                //TODO: TRIGGER END GAME STUFF
-                //TODO: Set All Scriptable assets to not done
-            }
+            // if(DayCount >6) {
+            //     //TODO: TRIGGER END GAME STUFF
+            //     //TODO: Set All Scriptable assets to not done
+            // }
         }
     }
 
