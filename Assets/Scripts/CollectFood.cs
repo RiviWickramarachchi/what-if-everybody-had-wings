@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CollectFood : MonoBehaviour
 {
-
+    public AudioClip buySound;
     private int workID;
     private bool playerInRange;
     public static event Action<bool> OnInteractionTrigger;
@@ -60,6 +60,7 @@ public class CollectFood : MonoBehaviour
     private void PickUpFood() {
         if(Input.GetKeyDown(KeyCode.E)) {
             if(playerInRange) {
+                AudioSource.PlayClipAtPoint(buySound, transform.position);
                 //TODO: Invoke necessary scene in SceneLoader
                 GameManager.Instance.MarkTodoComplete(workID);
                 SetGameObject();
