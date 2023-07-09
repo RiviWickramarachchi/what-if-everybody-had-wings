@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnvironmentManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class EnvironmentManager : MonoBehaviour
     [SerializeField] private GameObject workBuildingAfterWings;
     [SerializeField] private GameObject bridgeBeforeWings;
     [SerializeField] private GameObject bridgeAfterWings;
+    [SerializeField] private TMP_Text dayUI;
 
     //private fields
     private int day;
@@ -22,6 +24,7 @@ public class EnvironmentManager : MonoBehaviour
         SetTrafficGameObjects();
         SetBridgeGameObjects();
         SetWorkBuildingGameObjects();
+        dayUI.text = day.ToString("0");
     }
 
     private void SetTrafficGameObjects() {

@@ -6,6 +6,10 @@ using System;
 
 public class SceneLoader : MonoBehaviour
 {
+    //private variables
+    private const string TRANSITION_SCENE = "Scenes/TransitionScene";
+    private int dayCount;
+    //serialized variables
     [SerializeField] private float sceneTransitionTime = 2f;
     [SerializeField] private float levelTransitionTime = 5f;
     [SerializeField] private Animator transition;
@@ -16,6 +20,10 @@ public class SceneLoader : MonoBehaviour
         SceneTrigger.OnSceneTriggered += DecideLoader;
         GameManager.OnDayEnd += LoadLevel;
         WorkMiniGame.OnSceneEnd += DecideLoader;
+    }
+    
+    void Start() {
+        dayCount = GameManager.Instance.DayCount;
     }
 
     private void LoadScene(string sceneName) {
@@ -33,11 +41,21 @@ public class SceneLoader : MonoBehaviour
         StartCoroutine(LevelTransition());
     }
 
+    public void LoadTransitionScene() {
+        LoadScene(TRANSITION_SCENE);
+    }
+
     private void DecideLoader(string sceneName) {
         if(GameManager.Instance.IsInMiniGame) {
             GameManager.Instance.IsInMiniGame = false;
             GameManager.Instance.CheckTodoCompletion(); //SEE IF A NEW LEVEL NEEDS TO BE LOADED
-            LoadLevel();
+            int currentDay = GameManager.Instance.DayCount;
+            if(currentDay <= dayCount) {
+                LoadLevel();
+            }
+            else {
+                LoadTransitionScene();
+            }
         }
         else {
             GameManager.Instance.IsInMiniGame = true;
@@ -69,9 +87,9 @@ public class SceneLoader : MonoBehaviour
 
         SceneManager.LoadScene(1); //index for the main scene
     }
-    private void LoadFinal() {
-        //TODO: Load End Game Scene
-    }
+    // private void LoadFinal() {
+    //     //TODO: Load End Game Scene
+    // }
     private void OnDisable() {
         SceneTrigger.OnSceneTriggered -= DecideLoader;
         GameManager.OnDayEnd -= LoadLevel;
