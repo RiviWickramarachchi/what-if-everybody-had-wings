@@ -63,7 +63,7 @@ public class PlayerMovements : MonoBehaviour
     {
         if(!GameManager.Instance.IsInMiniGame) {
             LoadPosition();
-            respawnPoint = new Vector3(15.91f, -2.6947f, 0f);
+            respawnPoint = new Vector3(15.91f, 19f, 0f);
         }
     }
 
