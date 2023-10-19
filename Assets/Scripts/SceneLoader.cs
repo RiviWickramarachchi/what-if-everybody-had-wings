@@ -21,7 +21,7 @@ public class SceneLoader : MonoBehaviour
         GameManager.OnDayEnd += LoadLevel;
         WorkMiniGame.OnSceneEnd += DecideLoader;
     }
-    
+
     void Start() {
         dayCount = GameManager.Instance.DayCount;
     }
