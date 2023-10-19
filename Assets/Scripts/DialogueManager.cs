@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     private List<string> tags;
     //serialized fields
     [SerializeField] private TMP_Text textBody;
+    [SerializeField] private TMP_Text skipInstructions;
     [SerializeField] private TextAsset inkStory;
     [SerializeField] private Button continueBtn;
 
@@ -35,11 +36,18 @@ public class DialogueManager : MonoBehaviour
         tags = new List<string>();
         isTyping = false;
         continueBtn.gameObject.SetActive(false);
+        skipInstructions.gameObject.SetActive(false);
 
     }
 
     void Start() {
         EnterSceneTransitionMonologueMode(inkStory);
+    }
+
+    void Update() {
+        if(Input.GetButtonDown("Jump")) {
+            SkipCurrentText();
+        }
     }
 
     public void EnterSceneTransitionMonologueMode(TextAsset inkJSON) {
@@ -59,8 +67,15 @@ public class DialogueManager : MonoBehaviour
 
     private void ExitSceneTransitionMonologueMode() {
         dialogueIsPlaying = false;
-        //speakers.SetActive(false);
         textBody.text = "";
+    }
+
+    private void SkipCurrentText() {
+        skipInstructions.gameObject.SetActive(false);
+        if (!dialogueIsPlaying) {
+            return;
+        }
+        ContinueStory();
     }
 
     //might have to modify to cater the needs
@@ -91,9 +106,15 @@ public class DialogueManager : MonoBehaviour
             textBody.text += letter;
             yield return new WaitForSeconds(textSpeedInMilSecs);
         }
+        if(!story.canContinue)
+        {
+            //continue btn display should be in continueStory when the ink Story has finished
+            continueBtn.gameObject.SetActive(true);
+        }
+        else {
+            skipInstructions.gameObject.SetActive(true);
+        }
         isTyping = false;
-        //continue btn display should be in continueStory when the ink Story has finished
-        continueBtn.gameObject.SetActive(true);
         yield return null;
     }
 
