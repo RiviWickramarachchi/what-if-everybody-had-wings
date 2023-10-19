@@ -14,9 +14,13 @@ Lets find out!
 
 ->END
 === day_2 ===
-This is day 2... Aasdasdasdasda.
+As the dawn's golden light seeps through the window, you stir from slumber, only to find a surreal sight greeting you.
+Everyone gracefully soars on feathered wings, you alone stand grounded, some kind of anomaly…
 ->END
 
 === day_3 ===
-This is day 3... Aasdasdasdasda.
+Subtle transformations unfurl around you. Streets are reshaped, accommodating the new rhythm daily life has taken on. 
+On your journey to work, an eerie stillness governs the roads - no traffic in sight. Windows all over hang open as winged commuters forgo the hassle of stairs and elevators to reach their destination. 
+With the buses standing still, your chances of arriving to work on time are rapidly dwindling.
+
 ->END
