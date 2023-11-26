@@ -68,6 +68,7 @@ public class DialogueManager : MonoBehaviour
     private void ExitSceneTransitionMonologueMode() {
         dialogueIsPlaying = false;
         textBody.text = "";
+        continueBtn.gameObject.SetActive(true);
     }
 
     private void SkipCurrentText() {
@@ -75,6 +76,7 @@ public class DialogueManager : MonoBehaviour
         if (!dialogueIsPlaying) {
             return;
         }
+        //Debug.Log(story.canContinue);
         ContinueStory();
     }
 
@@ -141,5 +143,4 @@ public class DialogueManager : MonoBehaviour
         textSpeedInMilSecs = speedVal * 0.001f;
     }
 
-    //add skip btn if necessary
 }
